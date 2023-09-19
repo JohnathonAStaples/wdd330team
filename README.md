@@ -20,6 +20,6 @@ Use this as a starting point to complete the WDD 330 team activity: the SleepOut
 - `npm run format` to run Prettier to automatically format your code.
 
 ## Links
-#Link for Netlify
+Link for Netlify
 [
 ](https://6508eff2ca32917ba0f420a9--majestic-bubblegum-46d159.netlify.app/)https://6508eff2ca32917ba0f420a9--majestic-bubblegum-46d159.netlify.app/
