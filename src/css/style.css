@@ -216,6 +216,33 @@ button {
   }
 }
 
+.alert-list {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.alert-list p {
+  background-color: #3498db;
+  color: #fff;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.alert-list p {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert-list p {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); ;
+}
+.alert-list p:hover {
+  background-color: #ff5733; /* Change the background color on hover */
+}
+
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
