@@ -6,7 +6,7 @@ const alertModule = (function  () {
     //Function to fetch/parse alerts from alerts.json
     async function fetchAlerts() {
         try {
-            const response = await fetch("../alerts.json"); //fetches and waits for response
+            const response = await fetch("json/alerts.json"); //fetches and waits for response
             const data = await response.json(); //grabs response from the response body and parses json
             alerts.push(...data); //push alerts from json into the alerts array up above
         }   catch (error) {
@@ -14,21 +14,27 @@ const alertModule = (function  () {
         }
     }
 
-    //Function to create alert elements
-    function createAlertElements() {
-        const alertList = document.createElement("section"); //html section is created 
-        alertList.classList.add("alert-list"); //css class is added to the alertList element
+  // Function to create alert elements with error handling
+function createAlertElements() {
+    const alertList = document.createElement("section");
+    alertList.classList.add("alert-list");
 
-        alerts.forEach((alertData) => { //loop that iterates over the array of info that came from json 
-            const alert = document.createElement("p"); //creates a p element
-            alert.textContent = alertData.message; //sets the text inside the paragraph to the alert message
-            alert.style.backgroundColor = alertData.background; //sets the backgroundcolor to the alertData object
-            alert.style.color = alertData.color; //sets the text color to the alertData object
+    alerts.forEach((alertData) => {
+        try {
+            const alert = document.createElement("p");
+            alert.textContent = alertData.message;
+            alert.style.backgroundColor = alertData.background;
+            alert.style.color = alertData.color;
             alertList.appendChild(alert);
-        });
+        } catch (error) {
+            console.error("Error creating alert element:", error);
+            // You can choose to skip this alert and continue with the rest if needed.
+        }
+    });
 
-        return alertList;
-    }
+    return alertList;
+}
+
 
     //Function to prepend the alert section to the main element in the html
     function prependAlertsToMain() {
@@ -49,5 +55,5 @@ const alertModule = (function  () {
     };
 })();
 
-export default alertModule;
+//export default alertModule;
 
