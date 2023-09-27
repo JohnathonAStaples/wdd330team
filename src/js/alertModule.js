@@ -6,7 +6,7 @@ const alertModule = (function  () {
     //Function to fetch/parse alerts from alerts.json
     async function fetchAlerts() {
         try {
-            const response = await fetch("json/alerts.json"); //fetches and waits for response
+            const response = await fetch("json/alert.json"); //fetches and waits for response
             const data = await response.json(); //grabs response from the response body and parses json
             alerts.push(...data); //push alerts from json into the alerts array up above
         }   catch (error) {
