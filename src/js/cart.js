@@ -3,11 +3,15 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
 
-  if (cartItems == null) {
+  if (!cartItems || cartItems.length == 0) {
     document.querySelector(".product-list").innerHTML = "No items in cart";
   } else {
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    const total = cartItems.reduce((acc, item) => acc + item.FinalPrice, 0);
+    const formatTotal = "$" + total.toFixed(2);
+    const cartTotalValue = document.querySelector(".cart-total");
+    cartTotalValue.textContent = "Total: " + formatTotal;
   }
 }
 
