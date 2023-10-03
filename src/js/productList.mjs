@@ -21,15 +21,14 @@ function productCardTemplate(product) {  //function that takes a product as an o
     console.log(tentProducts) 
      return tentProducts.slice(0, count); }
 
-export default async function productList(selector, category) {
-    const el = document.querySelector(selector);
-  
-    // Get the list of products
-    const products = await getData(category);
-    console.log(products);
- // const filteredTents = filterProducts(products, 'tents', 4);
-    const filteredTents = filterTents(products, 4);
-    console.log(filteredTents)
-    // Render out the product list with the filtered products
-    renderListWithTemplate(productCardTemplate, el, filteredTents);
-  }
+     export default async function productList(selector, category) {
+        const el = document.querySelector(selector);
+        
+        // Get the list of products
+        const products = await getData(category);
+        
+        const filteredProducts = products.slice(0, 4);
+        
+        // Render out the product list with the filtered products
+        renderListWithTemplate(productCardTemplate, el, filteredProducts);
+       }
