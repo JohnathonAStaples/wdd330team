@@ -16,10 +16,7 @@ function productCardTemplate(product) {  //function that takes a product as an o
 }
 
 
-  function filterTents(products, count) {   
-    const tentProducts = products.filter(product => product.category === "tents");  
-    console.log(tentProducts) 
-     return tentProducts.slice(0, count); }
+
 
      export default async function productList(selector, category) {
         const el = document.querySelector(selector);
