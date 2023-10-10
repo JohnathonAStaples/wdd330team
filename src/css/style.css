@@ -91,15 +91,6 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
-
-.cart-item-remove {
-  font-size: 14px;
-  padding: 4px 8px;
-  grid-column: 4;
-  position: relative;
-  top: -35%;
-}
-
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -182,7 +173,6 @@ button {
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
-  
 }
 
 .cart-card__image {
@@ -225,8 +215,6 @@ button {
     grid-template-columns: 150px auto 15%;
   }
 }
-
-
 
 footer {
   font-size: var(--small-font);
