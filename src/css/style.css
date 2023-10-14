@@ -202,6 +202,20 @@ button {
   grid-column: 3;
 }
 
+#cart-count {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  background-color: orange;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  font-size: 0.7em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

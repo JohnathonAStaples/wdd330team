@@ -70,6 +70,18 @@ function loadTemplate(path) {
   };
 }
 
+export const renderSuperscriptNumbers = () => {
+  let cart = getLocalStorage("so-cart");
+  let cartItems;
+  if (cart) {
+    cartItems = getLocalStorage("so-cart").length;
+  } else {
+    cartItems = 0;
+  }
+  const superscript = document.getElementById("cart-count");
+  superscript.innerHTML = cartItems;
+};
+
 export async function loadHeaderFooter() {
   const headerTemplateFn = loadTemplate("/partials/header.html");
   const footerTemplateFn = loadTemplate("/partials/footer.html");
@@ -77,6 +89,8 @@ export async function loadHeaderFooter() {
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
 
-  renderWithTemplate(headerTemplateFn, headerElement);
-  renderWithTemplate(footerTemplateFn, footerElement);
+  await renderWithTemplate(headerTemplateFn, headerElement);
+  await renderWithTemplate(footerTemplateFn, footerElement);
+
+  renderSuperscriptNumbers();
 }
