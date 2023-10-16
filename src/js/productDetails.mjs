@@ -30,17 +30,40 @@ function addToCart() {
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
-  document.querySelector("#productNameWithoutBrand").innerText =
-    product.NameWithoutBrand;
+  document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Image;
   document.querySelector("#productImage").alt = product.Name;
-  document.querySelector("#productFinalPrice").innerText = product.FinalPrice;
-  document.querySelector("#productColorName").innerText =
-    product.Colors[0].ColorName;
-  document.querySelector("#productDescriptionHtmlSimple").innerHTML =
-    product.DescriptionHtmlSimple;
+
+  const priceElement = document.querySelector("#productFinalPrice");
+
+  if (product.Discount !== undefined) {
+    // Display the discount amount and percentage
+    const discountElement = document.createElement("p");
+    discountElement.id = "productDiscount";
+    discountElement.innerHTML = `Discount: $${product.Discount.Amount} (${product.Discount.Percent}%)`;
+    discountElement.classList.add("discount");
+
+    // Append the discountElement to the product-detail section
+    document.querySelector(".product-detail").appendChild(discountElement);
+
+    // Cross out the original price
+    priceElement.style.textDecoration = "line-through";
+
+    // Calculate and display the discounted price
+    const discountedPrice = product.FinalPrice - product.Discount.Amount;
+    const discountedPriceElement = document.createElement("p");
+    discountedPriceElement.innerHTML = `Discounted Price: $${discountedPrice.toFixed(2)}`;
+    priceElement.insertAdjacentElement("afterend", discountedPriceElement);
+  }
+
+  document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
+
+
+
+
 // function displayProductNotFoundError(showError) {
 //   // Display or hide the error message based on the 'showError' parameter
 //   const errorMessageElement = document.getElementById("errorMessage");
@@ -55,3 +78,4 @@ function renderProductDetails() {
 //   errorMessageElement.innerText = errorMessage;
 //   errorMessageElement.style.display = "block";
 // }
+ 

@@ -74,7 +74,6 @@
     "Name": "Cedar Ridge Rimrock Tent - 2-Person, 3-Season",
     "IsFamousBrand": false,
     "Image": "../images/tents/cedar-ridge-rimrock-tent-2-person-3-season-in-rust-clay~p~344yj_01~320.jpg",
-
     "SizesAvailable": {},
     "Colors": [
       {
@@ -82,15 +81,20 @@
         "ColorName": "Rust/Clay"
       }
     ],
-    "DescriptionHtmlSimple": "<strong><a class=\"glossaryTermLink\" href=\"/closeouts~g~2312\" title=\"Closeouts: - Closeouts are items that may be last year's model or color. While closeout items are often offered at discounted prices, the products themselves are always high quality. Closeout items can include anything from shoes, underwear and apparel, to rugs, tents and outdoor equipment. Closeouts are often a high percentage off the retail price.\">Closeouts</a></strong>. Lightweight and ready for adventure, this Cedar Ridge Rimrock tent boasts a weather-ready design that includes a tub-style floor and factory-sealed <a class=\"glossaryTermLink\" href=\"/rain-fly~g~2021\" title=\"Rain Fly: - Rain fly is an additional piece of fabric (attached or unattached) that is placed over the top of the tent to provide weatherproofness. The rain fly is usually made of polyester or nylon and is sometimes coated for additional water repellency.\">rain fly</a>.",
+    "DescriptionHtmlSimple": "Lightweight and ready for adventure...",
     "SuggestedRetailPrice": 89.99,
     "Brand": {
       "Id": "35027",
       "Name": "Cedar Ridge"
     },
     "ListPrice": 69.99,
-    "FinalPrice": 69.99
+    "FinalPrice": 69.99,
+    "Discount": {
+      "Amount": 6.99, 
+      "Percent": 10 
+    }
   },
+  
   {
     "Id": "989CG",
     "NameWithoutBrand": "Talus Tent - 3-Person, 3-Season",
