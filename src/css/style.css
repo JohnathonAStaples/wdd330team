@@ -228,7 +228,15 @@ button {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
   }
+
 }
+#productDiscount {
+  font-size: 1.2em; 
+  color: black; 
+  font-weight: bold;
+  margin-top: 10px;
+}
+
 
 footer {
   font-size: var(--small-font);
