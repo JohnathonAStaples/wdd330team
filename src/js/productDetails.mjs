@@ -30,8 +30,9 @@ function addToCart() {
 
 function renderProductDetails() {
   document.querySelector("#productName").innerText = product.Brand.Name;
-  document.querySelector("#productNameWithoutBrand").innerText = product.NameWithoutBrand;
-  document.querySelector("#productImage").src = product.Image;
+  document.querySelector("#productNameWithoutBrand").innerText =
+    product.NameWithoutBrand;
+  document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
 
   const priceElement = document.querySelector("#productFinalPrice");
@@ -52,17 +53,18 @@ function renderProductDetails() {
     // Calculate and display the discounted price
     const discountedPrice = product.FinalPrice - product.Discount.Amount;
     const discountedPriceElement = document.createElement("p");
-    discountedPriceElement.innerHTML = `Discounted Price: $${discountedPrice.toFixed(2)}`;
+    discountedPriceElement.innerHTML = `Discounted Price: $${discountedPrice.toFixed(
+      2
+    )}`;
     priceElement.insertAdjacentElement("afterend", discountedPriceElement);
   }
 
-  document.querySelector("#productColorName").innerText = product.Colors[0].ColorName;
-  document.querySelector("#productDescriptionHtmlSimple").innerHTML = product.DescriptionHtmlSimple;
+  document.querySelector("#productColorName").innerText =
+    product.Colors[0].ColorName;
+  document.querySelector("#productDescriptionHtmlSimple").innerHTML =
+    product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
 }
-
-
-
 
 // function displayProductNotFoundError(showError) {
 //   // Display or hide the error message based on the 'showError' parameter
@@ -78,4 +80,3 @@ function renderProductDetails() {
 //   errorMessageElement.innerText = errorMessage;
 //   errorMessageElement.style.display = "block";
 // }
- 

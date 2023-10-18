@@ -4,9 +4,9 @@ import { renderListWithTemplate } from "./utils.mjs"; //importing function that 
 function productCardTemplate(product) {
   //function that takes a product as an object and returns an HTML template string
   return `<li class="product-card">
-    <a href="product_pages/index.html?product=${product.Id}">
+    <a href="../product_pages/index.html?product=${product.Id}">
     <img
-      src="${product.Image}"
+      src="${product.Images.PrimaryMedium}"
       alt="Image of ${product.Name}"
     />
     <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -21,8 +21,9 @@ export default async function productList(selector, category) {
   // Get the list of products
   const products = await getData(category);
 
-  const filteredProducts = products.slice(0, 4);
+  // const filteredProducts = products.slice(0, 4);
 
   // Render out the product list with the filtered products
-  renderListWithTemplate(productCardTemplate, el, filteredProducts);
+  renderListWithTemplate(productCardTemplate, el, products);
+  document.querySelector(".title").innerHTML = category;
 }
