@@ -216,6 +216,38 @@ button {
   justify-content: center;
 }
 
+.category-grid {
+  text-align: center; /* Center the category boxes */
+}
+
+.category-grid a {
+  text-decoration: none; /* Remove underlines from links */
+}
+
+.tent-box,
+.sleeping-bag-box,
+.backpack-box,
+.hammock-box {
+  display: inline-block; /* Display boxes inline */
+  margin: 10px; /* Add spacing between boxes */
+}
+
+.tent-box img,
+.sleeping-bag-box img,
+.backpack-box img,
+.hammock-box img {
+  width: 50px; /* Adjust the width of the icons*/
+}
+
+
+.tent-box p,
+.sleeping-bag-box p,
+.backpack-box p,
+.hammock-box p {
+  color: black; /* Set the text color to black */
+}
+
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
