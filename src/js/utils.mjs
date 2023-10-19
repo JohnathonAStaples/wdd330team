@@ -94,3 +94,15 @@ export async function loadHeaderFooter() {
 
   renderSuperscriptNumbers();
 }
+
+export function animateCart() {
+  const cartIcon = document.getElementById("backpack-icon");
+
+  if (cartIcon) {
+    cartIcon.classList.add("shaking");
+
+    setTimeout(() => {
+      cartIcon.classList.remove("shaking");
+    }, 1000);
+  }
+}

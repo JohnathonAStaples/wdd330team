@@ -4,6 +4,7 @@ import {
   getLocalStorage,
   renderSuperscriptNumbers,
   loadHeaderFooter,
+  animateCart,
 } from "./utils.mjs";
 
 let product = {};
@@ -25,6 +26,7 @@ function addToCart() {
 
   cart.push(product);
   setLocalStorage("so-cart", cart);
+  animateCart();
   renderSuperscriptNumbers();
 }
 
