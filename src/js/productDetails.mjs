@@ -24,7 +24,17 @@ function addToCart() {
 
   const cart = Array.isArray(storedCart) ? storedCart : [];
 
-  cart.push(product);
+  const productId = product.Id;
+
+  const cartItem = cart.find((item) => item.Id === productId);
+
+  if (cartItem) {
+    cartItem.quantity++;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+
   setLocalStorage("so-cart", cart);
   animateCart();
   renderSuperscriptNumbers();
@@ -36,10 +46,9 @@ function renderProductDetails() {
     product.NameWithoutBrand;
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
-
   const priceElement = document.querySelector("#productFinalPrice");
 
-  if (product.Discount !== undefined) {
+  if (product.Discount) {
     // Display the discount amount and percentage
     const discountElement = document.createElement("p");
     discountElement.id = "productDiscount";

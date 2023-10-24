@@ -170,9 +170,12 @@ button {
 .cart-card {
   display: grid;
   grid-template-columns: 25% auto 15%;
+  gap: 10px;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .cart-card__image {
@@ -246,6 +249,47 @@ button {
 .hammock-box p {
   color: black; /* Set the text color to black */
 }
+
+.quantity-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 15px;
+}
+
+.cart-card__quantity span{
+  margin-right: 8px;
+}
+
+/* Style the plus button */
+.plus-button {
+  background-color: #057b09;
+  color: white;
+  border: none;
+  border-radius: 40%;
+  padding: 6px 12px;
+  cursor: pointer;
+  float: right;
+}
+
+
+/* Style the minus button */
+.minus-button {
+  background-color: #d4281c; /* Red background */
+  color: white;
+  border: none;
+  border-radius: 40%;
+  padding: 6px 12px;
+  cursor: pointer;
+  float: right;
+}
+
+
+ 
+  
+
 
 @keyframes shake {
   0% { transform: translateX(0); }
