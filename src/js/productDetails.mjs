@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import {
   setLocalStorage,
   getLocalStorage,
@@ -66,6 +66,7 @@ function renderProductDetails() {
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+  document.querySelector(".product-card__price").innerText = product.FinalPrice;
 }
 
 // function displayProductNotFoundError(showError) {
