@@ -31,16 +31,20 @@ function addToCart() {
 }
 
 function renderProductDetails() {
+  //update product name and details
   document.querySelector("#productName").innerText = product.Brand.Name;
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
+
+    //update product image
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
-
+  
+    //get the element for product final price
   const priceElement = document.querySelector("#productFinalPrice");
 
   if (product.Discount !== undefined) {
-    // Display the discount amount and percentage
+    // If a discount is available, create a discount element
     const discountElement = document.createElement("p");
     discountElement.id = "productDiscount";
     discountElement.innerHTML = `Discount: $${product.Discount.Amount} (${product.Discount.Percent}%)`;
