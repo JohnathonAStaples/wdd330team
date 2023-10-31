@@ -10,6 +10,7 @@ import {
 let product = {};
 
 loadHeaderFooter();
+
 export default async function productDetails(productId) {
   // get the details for the current product. findProductById will return a promise! use await or .then() to process it
   product = await findProductById(productId);
@@ -46,18 +47,16 @@ function renderProductDetails() {
   document.querySelector("#productNameWithoutBrand").innerText =
     product.NameWithoutBrand;
 
-    //update product image
+  //update product image
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
 
-  
-    //get the element for product final price
+  //get the element for product final price
   const priceElement = document.querySelector("#productFinalPrice");
 
   if (product.Discount !== undefined) {
     // If a discount is available, create a discount element
 
-    const priceElement = document.querySelector("#productFinalPrice");
     const discountElement = document.createElement("p");
     discountElement.id = "productDiscount";
     discountElement.innerHTML = `Discount: $${product.Discount.Amount} (${product.Discount.Percent}%)`;
