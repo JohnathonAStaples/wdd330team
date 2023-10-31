@@ -18,6 +18,20 @@ export default function shoppingCart() {
   removeButtons.forEach((btn) => {
     btn.addEventListener("click", handleRemoveItem);
   });
+
+  const plusButtons = document.querySelectorAll(".plus-button");
+  plusButtons.forEach((btn) => {
+    btn.addEventListener("click", () =>
+      handleQuantityButtonClick(btn, "increase")
+    );
+  });
+
+  const minusButtons = document.querySelectorAll(".minus-button");
+  minusButtons.forEach((btn) => {
+    btn.addEventListener("click", () =>
+      handleQuantityButtonClick(btn, "decrease")
+    );
+  });
 }
 
 function renderCartContents(cartItems, output, cartTotalValue) {
@@ -25,9 +39,14 @@ function renderCartContents(cartItems, output, cartTotalValue) {
     output.innerHTML = "No items in cart";
     cartTotalValue.style.display = "none"; // Hide the total when no items are in the cart
   } else {
-    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    const htmlItems = cartItems.map((item) =>
+      cartItemTemplate(item, item.quantity)
+    );
     output.innerHTML = htmlItems.join("");
-    const total = cartItems.reduce((acc, item) => acc + item.FinalPrice, 0);
+    const total = cartItems.reduce((acc, item) => {
+      const itemCost = item.FinalPrice * item.quantity;
+      return acc + itemCost;
+    }, 0);
     const formatTotal = "$" + total.toFixed(2);
     cartTotalValue.textContent = "Total: " + formatTotal;
 
@@ -36,9 +55,9 @@ function renderCartContents(cartItems, output, cartTotalValue) {
   }
 }
 
-function cartItemTemplate(item) {
+function cartItemTemplate(item, quantity) {
   const newItem = `<li class="cart-card divider" style="position: relative;">
-  <button class="cart-item-remove" data-id="${item.Id}" style="position: absolute; top: 5px; right: 5px; height: 20px; font-size: 10px;">X</button>
+  <button class="cart-item-remove" data-id="${item.Id}" style="position: absolute; top: -20px; right: -15px; height: 20px; font-size: 10px;">X</button>
     <a href="#" class="cart-card__image">
       <img
         src="${item.Images.PrimaryMedium}"
@@ -49,7 +68,12 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <div class="cart-card__quantity">
+      <span>QTY: ${quantity}</span>
+      <button class="quantity-button plus-button" data-id="${item.Id}" onclick="test()" >+</button>
+      <button class="quantity-button minus-button" data-id="${item.Id}">-</button>
+      
+    </div>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
 
@@ -66,6 +90,30 @@ function handleRemoveItem(event) {
   setLocalStorage("so-cart", cartItems);
 
   shoppingCart(); // Update the cart view after item removal
+
+  renderSuperscriptNumbers();
+}
+
+function handleQuantityButtonClick(btn, action) {
+  const itemId = btn.getAttribute("data-id");
+
+  let cartItems = getLocalStorage("so-cart");
+
+  const cartItem = cartItems.find((item) => item.Id === itemId);
+
+  if (cartItem) {
+    if (action === "increase") {
+      cartItem.quantity++;
+    } else if (action === "decrease") {
+      if (cartItem.quantity > 1) {
+        cartItem.quantity--;
+      }
+    }
+  }
+
+  setLocalStorage("so-cart", cartItems);
+
+  shoppingCart();
 
   renderSuperscriptNumbers();
 }

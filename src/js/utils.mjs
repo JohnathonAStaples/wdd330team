@@ -73,8 +73,8 @@ function loadTemplate(path) {
 export const renderSuperscriptNumbers = () => {
   let cart = getLocalStorage("so-cart");
   let cartItems;
-  if (cart) {
-    cartItems = getLocalStorage("so-cart").length;
+  if (cart && Array.isArray(cart)) {
+    cartItems = cart.reduce((count, item) => count + item.quantity, 0);
   } else {
     cartItems = 0;
   }

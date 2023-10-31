@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import {
   setLocalStorage,
   getLocalStorage,
@@ -24,7 +24,17 @@ function addToCart() {
 
   const cart = Array.isArray(storedCart) ? storedCart : [];
 
-  cart.push(product);
+  const productId = product.Id;
+
+  const cartItem = cart.find((item) => item.Id === productId);
+
+  if (cartItem) {
+    cartItem.quantity++;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+
   setLocalStorage("so-cart", cart);
   animateCart();
   renderSuperscriptNumbers();
@@ -39,12 +49,15 @@ function renderProductDetails() {
     //update product image
   document.querySelector("#productImage").src = product.Images.PrimaryLarge;
   document.querySelector("#productImage").alt = product.Name;
+
   
     //get the element for product final price
   const priceElement = document.querySelector("#productFinalPrice");
 
   if (product.Discount !== undefined) {
     // If a discount is available, create a discount element
+
+    const priceElement = document.querySelector("#productFinalPrice");
     const discountElement = document.createElement("p");
     discountElement.id = "productDiscount";
     discountElement.innerHTML = `Discount: $${product.Discount.Amount} (${product.Discount.Percent}%)`;
@@ -70,6 +83,7 @@ function renderProductDetails() {
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
+  document.querySelector(".product-card__price").innerText = product.FinalPrice;
 }
 
 // function displayProductNotFoundError(showError) {

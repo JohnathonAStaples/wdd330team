@@ -1,4 +1,4 @@
-import { getData } from "./productData.mjs"; //importing product list data
+import { getProductsByCategory } from "./externalServices.mjs"; //importing product list data
 import { renderListWithTemplate } from "./utils.mjs"; //importing function that is used to render lists of items using a template function
 
 function productCardTemplate(product) {
@@ -19,7 +19,7 @@ export default async function productList(selector, category) {
   const el = document.querySelector(selector);
 
   // Get the list of products
-  const products = await getData(category);
+  const products = await getProductsByCategory(category);
 
   // const filteredProducts = products.slice(0, 4);
 
