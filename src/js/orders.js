@@ -1,0 +1,8 @@
+import { checkLogin } from "../js/auth.mjs";
+import currentOrders from "./currentOrders.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
+
+const token = checkLogin();
+currentOrders("#orders", token);
