@@ -91,6 +91,24 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+
+.colorButton {
+  background-color: rgb(236, 234, 234);
+}
+
+.colorButton:hover {
+  background-color: rgb(211, 210, 210);
+}
+
+.colorButtonActive {
+  background-color: rgb(189, 188, 188);
+}
+
+#colorChoice {
+  display: flex;
+  gap: 5px;
+}
+
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
@@ -473,4 +491,5 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
 

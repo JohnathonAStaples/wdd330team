@@ -77,12 +77,60 @@ function renderProductDetails() {
     priceElement.insertAdjacentElement("afterend", discountedPriceElement);
   }
 
+  const colorsCount = countValuesInArray(product.Colors);
+
+  console.log('Number of colors:', colorsCount)
+  addOptionsToSelect(product.Colors)
+
   document.querySelector("#productColorName").innerText =
     product.Colors[0].ColorName;
   document.querySelector("#productDescriptionHtmlSimple").innerHTML =
     product.DescriptionHtmlSimple;
   document.querySelector("#addToCart").dataset.id = product.Id;
   document.querySelector(".product-card__price").innerText = product.FinalPrice;
+
+  
+}
+
+function countValuesInArray(array) {
+  if (!Array.isArray(array)) {
+    return 'Input is not an array.';
+  }
+  return array.length;
+}
+
+function addOptionsToSelect(array) {
+  const selectElement = document.getElementById('colorChoice');
+  
+  array.forEach(function(value) {
+    const option = document.createElement("button");
+    let img = document.createElement("img");
+
+    option.setAttribute("class", "colorButton")
+    option.setAttribute("id", value.ColorName)
+
+    img.setAttribute("src", value.ColorChipImageSrc);
+    // colorChoiceListener(value.ColorName)
+    option.appendChild(img);
+    // const option = document.createElement('option');
+    // option.value = value.ColorName;
+    // option.text = value.ColorName;
+    // selectElement.appendChild(option);
+    selectElement.appendChild(option);
+  });
+  
+}
+
+// function colorChoiceListener(buttonId) {
+//   const button = document.getElementById(buttonId);
+
+//   button.addEventListener("click", saveColorChoice(buttonId));
+// };
+
+function saveColorChoice() {
+  setLocalStorage("savedButtonId", buttonId);
+  console.log(`Button ID "${buttonId}" saved to local storage.`);
+
 }
 
 // function displayProductNotFoundError(showError) {
